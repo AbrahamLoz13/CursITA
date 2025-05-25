@@ -35,7 +35,8 @@
             <h2 class="card-title fw-bold text-primary">Curso Java</h2>
             <p class="card-text text-muted">Aprende el lenguaje de Java.</p>
             <p class="fw-bold text-success">$199.00</p>
-            <button class="btn btn-primary rounded-pill px-4 add-to-cart" data-nombre="Curso Java" data-precio="199">Añadir al carrito</button>
+            <button class="btn btn-primary rounded-pill px-4 add-to-cart" data-nombre="Curso Java" data-precio="199" data-img="../img/java.png">Añadir al carrito</button>
+            <button class="btn btn-outline-secondary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#modalJava">Ver detalles</button>
           </div>
         </div>
       </div>
@@ -47,7 +48,8 @@
             <h2 class="card-title fw-bold text-primary">Python desde cero</h2>
             <p class="card-text text-muted">Domina uno de los lenguajes más populares.</p>
             <p class="fw-bold text-success">$249.00</p>
-            <button class="btn btn-primary rounded-pill px-4 add-to-cart" data-nombre="Python desde cero" data-precio="249">Añadir al carrito</button>
+            <button class="btn btn-primary rounded-pill px-4 add-to-cart" data-nombre="Python desde cero" data-precio="249" data-img="../img/phyton.png">Añadir al carrito</button>
+            <button class="btn btn-outline-secondary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#modalPython">Ver detalles</button>
           </div>
         </div>
       </div>
@@ -59,7 +61,8 @@
             <h2 class="card-title fw-bold text-primary">Redes emergentes</h2>
             <p class="card-text text-muted">Aprende la administración de redes.</p>
             <p class="fw-bold text-success">$149.00</p>
-            <button class="btn btn-primary rounded-pill px-4 add-to-cart" data-nombre="Redes emergentes" data-precio="149">Añadir al carrito</button>
+            <button class="btn btn-primary rounded-pill px-4 add-to-cart" data-nombre="Redes emergentes" data-precio="149" data-img="../img/redes.png">Añadir al carrito</button>
+            <button class="btn btn-outline-secondary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#modalRedes">Ver detalles</button>
           </div>
         </div>
       </div>
@@ -75,17 +78,160 @@
     </div>
   </section>
 
-  <section id="carrito" class="container text-center my-5">
-    <h2 class="fw-bold text-primary">Carrito de Compras</h2>
-    <ul id="lista-carrito" class="list-group my-3"></ul>
-    <p class="fw-bold">Total: $<span id="total">0</span></p>
+  <section id="carrito" class="container my-5">
+    <h2 class="fw-bold text-primary text-center mb-4">Carrito de Compras</h2>
+    <div id="lista-carrito" class="row g-3"></div>
+    <p class="fw-bold fs-4 text-end">Total: $<span id="total">0</span></p>
+    <div class="container text-end mb-5" id="btn-comprar-container">
+      <button class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-sm" id="btn-comprar" style="display: none;">Comprar Ahora</button>
+    </div>
   </section>
 
   <footer class="bg-primary text-white text-center p-3">
     <p class="mb-0">&copy; 2025 Cursita - Aprende a tu ritmo</p>
   </footer>
 
+  <!-- MODALES DE CURSOS -->
+  <!-- Modal Curso Java -->
+  <div class="modal fade" id="modalJava" tabindex="-1" aria-labelledby="modalJavaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary fw-bold" id="modalJavaLabel">Curso Java</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <img src="../img/java.png" class="img-fluid mb-3" alt="Curso Java">
+          <p><strong>Descripción:</strong> Aprende programación orientada a objetos, estructuras de datos y creación de aplicaciones con Java.</p>
+          <p><strong>Duración:</strong> 8 semanas</p>
+          <p><strong>Docentes:</strong> Mtro. Juan Pérez, Ing. Laura González</p>
+          <p><strong>Incluye:</strong> Acceso de por vida, proyectos, certificado digital.</p>
+          <p><strong>Precio:</strong> $199.00</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary add-to-cart" data-nombre="Curso Java" data-precio="199" data-img="../img/java.png">Añadir al carrito</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Curso Python -->
+  <div class="modal fade" id="modalPython" tabindex="-1" aria-labelledby="modalPythonLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary fw-bold" id="modalPythonLabel">Python desde cero</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <img src="../img/phyton.png" class="img-fluid mb-3" alt="Curso Python">
+          <p><strong>Descripción:</strong> Aprende desde lo básico hasta temas avanzados de Python, ideal para desarrollo web y análisis de datos.</p>
+          <p><strong>Duración:</strong> 10 semanas</p>
+          <p><strong>Docentes:</strong> Dra. Sofía Ramírez, Mtro. Carlos Ortega</p>
+          <p><strong>Incluye:</strong> Clases grabadas, ejercicios prácticos, comunidad de soporte.</p>
+          <p><strong>Precio:</strong> $249.00</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary add-to-cart" data-nombre="Python desde cero" data-precio="249" data-img="../img/phyton.png">Añadir al carrito</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Curso Redes -->
+  <div class="modal fade" id="modalRedes" tabindex="-1" aria-labelledby="modalRedesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary fw-bold" id="modalRedesLabel">Redes emergentes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <img src="../img/redes.png" class="img-fluid mb-3" alt="Curso Redes">
+          <p><strong>Descripción:</strong> Aprende configuración, administración y seguridad en redes modernas para empresas.</p>
+          <p><strong>Duración:</strong> 6 semanas</p>
+          <p><strong>Docentes:</strong> Ing. Luis Méndez, Mtra. Ana Torres</p>
+          <p><strong>Incluye:</strong> Laboratorios virtuales, evaluaciones, soporte técnico.</p>
+          <p><strong>Precio:</strong> $149.00</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary add-to-cart" data-nombre="Redes emergentes" data-precio="149" data-img="../img/redes.png">Añadir al carrito</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notificación -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="toastAgregado" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header bg-primary text-white">
+        <strong class="me-auto">Cursita</strong>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Curso agregado al carrito correctamente
+      </div>
+    </div>
+    
+    <div id="toastCompra" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header bg-success text-white">
+        <strong class="me-auto">Cursita</strong>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Compra realizada con éxito. Redirigiendo a tus cursos...
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Pago -->
+  <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPagoLabel">Finalizar Compra</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-pago">
+            <div class="mb-3">
+              <label for="metodo-pago" class="form-label">Método de Pago</label>
+              <select class="form-select" id="metodo-pago" required>
+                <option value="" selected disabled>Selecciona un método</option>
+                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                <option value="paypal">PayPal</option>
+                <option value="transferencia">Transferencia Bancaria</option>
+              </select>
+            </div>
+            <div id="tarjeta-info" style="display: none;">
+              <div class="mb-3">
+                <label for="numero-tarjeta" class="form-label">Número de Tarjeta</label>
+                <input type="text" class="form-control" id="numero-tarjeta" placeholder="1234 5678 9012 3456">
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="fecha-expiracion" class="form-label">Fecha de Expiración</label>
+                  <input type="text" class="form-control" id="fecha-expiracion" placeholder="MM/AA">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cvv" class="form-label">CVV</label>
+                  <input type="text" class="form-control" id="cvv" placeholder="123">
+                </div>
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Confirmar Pago</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/app.js"></script>
+  <script src="../js/carrito.js"></script>
 </body>
 </html>

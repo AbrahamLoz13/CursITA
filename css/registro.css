@@ -1,0 +1,80 @@
+/* registro.css */
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #333;
+}
+
+.register-container {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.register-container h1 {
+  margin-bottom: 30px;
+  color: #4b339b;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1.2px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  border-color: #764ba2;
+  outline: none;
+  box-shadow: 0 0 5px #764ba2;
+}
+
+form button {
+  width: 100%;
+  padding: 14px 0;
+  background: #764ba2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #5a347e;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .register-container {
+    padding: 30px 25px;
+  }
+  .register-container h1 {
+    font-size: 1.5rem;
+  }
+}
