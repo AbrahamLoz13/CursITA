@@ -20,11 +20,13 @@ if (!$resultado) {
 
 if (mysqli_num_rows($resultado) > 0) {
     $usuario = mysqli_fetch_assoc($resultado);
-    if (password_verify($contrasena, $usuario['contrasena'])) {
-        $_SESSION['usuario'] = $correo;
-        header("Location: ../screens/index.html");
-        exit();
-    } else {
+    
+  if (password_verify($contrasena, $usuario['contrasena'])) {
+    $_SESSION['usuario'] = $correo;
+    $_SESSION['usuario_id'] = $usuario['id']; // ✅ Añade esto
+    header("Location: ../screens/index.html");
+    exit();
+} else {
         echo "<script>alert('Usuario o contraseña incorrectos.'); window.location.href = '../screens/login.html';</script>";
         exit();
     }

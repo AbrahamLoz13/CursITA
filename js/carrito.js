@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Arreglo para almacenar cursos en el carrito
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
     const listaCarrito = document.getElementById('lista-carrito');
     const totalCarrito = document.getElementById('total');
     const btnComprar = document.getElementById('btn-comprar');
     const modalPago = new bootstrap.Modal(document.getElementById('modalPago'));
+    const metodoPagoSelect = document.getElementById('metodo-pago');
+    const tarjetaInfo = document.getElementById('tarjeta-info');
 
-    // Función para mostrar el carrito
+    // Mostrar/ocultar campos de tarjeta según selección
+    metodoPagoSelect.addEventListener('change', function() {
+        if (this.value === 'tarjeta') {
+            tarjetaInfo.style.display = 'block';
+        } else {
+            tarjetaInfo.style.display = 'none';
+        }
+    });
+
     function mostrarCarrito() {
         listaCarrito.innerHTML = '';
         let total = 0;
@@ -21,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
             carrito.forEach((curso, index) => {
                 total += curso.precio;
 
-                // Crear tarjeta para cada curso
                 const card = document.createElement('div');
                 card.className = 'col-md-4';
 
@@ -43,35 +50,43 @@ document.addEventListener('DOMContentLoaded', function() {
         totalCarrito.textContent = total.toFixed(2);
         localStorage.setItem('carrito', JSON.stringify(carrito));
 
-        // Asignar evento eliminar a cada botón
         document.querySelectorAll('.eliminar-curso').forEach(button => {
             button.addEventListener('click', (e) => {
                 const idx = e.target.getAttribute('data-index');
                 carrito.splice(idx, 1);
                 mostrarCarrito();
+                
+                // Mostrar notificación de eliminado
+                const toast = new bootstrap.Toast(document.getElementById('toastAgregado'));
+                toast._element.querySelector('.toast-body').textContent = 'Curso eliminado del carrito';
+                toast._element.querySelector('.toast-header').className = 'toast-header bg-danger text-white';
+                toast.show();
             });
         });
     }
 
-    // Añadir curso al carrito desde botones
+    // Añadir curso al carrito
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', () => {
             const nombre = button.getAttribute('data-nombre');
             const precio = parseFloat(button.getAttribute('data-precio'));
             const img = button.getAttribute('data-img');
 
-            // Verificar si el curso ya está en el carrito
             const existe = carrito.some(curso => curso.nombre === nombre);
             
             if (!existe) {
                 carrito.push({ nombre, precio, img });
                 mostrarCarrito();
                 
-                // Mostrar notificación
                 const toast = new bootstrap.Toast(document.getElementById('toastAgregado'));
+                toast._element.querySelector('.toast-body').textContent = 'Curso agregado al carrito correctamente';
+                toast._element.querySelector('.toast-header').className = 'toast-header bg-primary text-white';
                 toast.show();
             } else {
-                alert('Este curso ya está en tu carrito');
+                const toast = new bootstrap.Toast(document.getElementById('toastAgregado'));
+                toast._element.querySelector('.toast-body').textContent = 'Este curso ya está en tu carrito';
+                toast._element.querySelector('.toast-header').className = 'toast-header bg-warning text-dark';
+                toast.show();
             }
         });
     });
@@ -83,51 +98,73 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Procesar pago
-    document.getElementById('form-pago').addEventListener('submit', function(e) {
-        e.preventDefault();
+// Procesar pago - Versión corregida
+document.getElementById('form-pago').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const metodoPago = document.getElementById('metodo-pago').value;
+    
+    // Validar datos de tarjeta si es el método seleccionado
+    if (metodoPago === 'tarjeta') {
+        const numeroTarjeta = document.getElementById('numero-tarjeta').value;
+        const fechaExpiracion = document.getElementById('fecha-expiracion').value;
+        const cvv = document.getElementById('cvv').value;
         
-        // Verificar si el usuario está logueado
-        fetch('php/verificar_sesion.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.loggedin) {
-                    // Enviar datos al servidor
-                    const formData = new FormData();
-                    formData.append('metodo_pago', document.getElementById('metodo-pago').value);
-                    formData.append('carrito', JSON.stringify(carrito));
-                    
-                    fetch('php/procesar_pago.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            // Limpiar carrito y redirigir
-                            carrito = [];
-                            localStorage.removeItem('carrito');
-                            mostrarCarrito();
-                            modalPago.hide();
-                            
-                            // Mostrar notificación de éxito
-                            const toast = new bootstrap.Toast(document.getElementById('toastCompra'));
-                            toast.show();
-                            
-                            // Redirigir a mis cursos después de 2 segundos
-                            setTimeout(() => {
-                                window.location.href = 'php/mis_cursos.php';
-                            }, 2000);
-                        } else {
-                            alert('Error al procesar el pago: ' + data.message);
-                        }
-                    });
-                } else {
-                    alert('Debes iniciar sesión para completar la compra');
-                    window.location.href = 'login.php';
-                }
-            });
+        if (!numeroTarjeta || !fechaExpiracion || !cvv) {
+            alert('Por favor complete todos los datos de la tarjeta');
+            return;
+        }
+        
+        // Validación simple de tarjeta (solo para ejemplo)
+        if (!/^\d{16}$/.test(numeroTarjeta.replace(/\s/g, ''))) {
+            alert('Número de tarjeta inválido');
+            return;
+        }
+    }
+    
+    // Verificar sesión y procesar pago
+    fetch('../php/procesar_pago.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            metodo_pago: metodoPago,
+            carrito: carrito
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Limpiar carrito
+            carrito = [];
+            localStorage.removeItem('carrito');
+            mostrarCarrito();
+            modalPago.hide();
+            
+            // Mostrar notificación de éxito
+            const toast = new bootstrap.Toast(document.getElementById('toastCompra'));
+            toast.show();
+            
+            // Redirigir a mis cursos
+            setTimeout(() => {
+                
+                window.location.href = '../php/mis_cursos.php';
+            }, 2000);
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error al procesar el pago: ' + error.message);
     });
+});
 
     // Inicializar carrito
     mostrarCarrito();
