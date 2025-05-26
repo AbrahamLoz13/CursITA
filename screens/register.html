@@ -11,10 +11,22 @@
     <h1>Registrar Usuario</h1>
     <form action="../php/register.php" method="POST">
       <input type="email" name="correo" placeholder="Correo" required />
+      
       <input type="password" name="contrasena" placeholder="Contraseña" required minlength="6" />
+      
       <input type="password" name="contrasena_confirm" placeholder="Confirmar Contraseña" required minlength="6" />
+
+      <!-- Selección de rol -->
+      <select name="rol" required>
+        <option value="">Selecciona tu rol</option>
+        <option value="alumno">Alumno</option>
+        <option value="admin">Administrador</option>
+      </select>
+
       <button type="submit">Registrar</button>
     </form>
+
+    <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
   </div>
 </body>
 </html>

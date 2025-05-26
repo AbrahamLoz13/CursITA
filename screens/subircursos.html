@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Subir Cursos</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido Administrador</h1>
+    <form action="../php/subir_curso.php" method="POST" enctype="multipart/form-data">
+      <input type="text" name="titulo" placeholder="Título del curso" required><br>
+      <textarea name="descripcion" placeholder="Descripción" required></textarea><br>
+      <input type="file" name="archivo_curso" required><br>
+      <button type="submit">Subir curso</button>
+    </form>
+  </div>
+</body>
+</html>
