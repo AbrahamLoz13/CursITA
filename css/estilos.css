@@ -1,57 +1,251 @@
-/* Fondo general */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
+/* estilos.css - Versión con paleta azul y file input mejorado */
+
+/* Variables con paleta azul */
+:root {
+  --primary-dark: #1a237e;
+  --primary-main: #303f9f;
+  --primary-light: #7986cb;
+  --accent-color: #448aff;
+  --accent-hover: #2979ff;
+  --text-light: #ffffff;
+  --text-dark: #e8eaf6;
+  --bg-dark: rgba(26, 35, 126, 0.8);
+  --border-radius: 12px;
+  --box-shadow: 0 10px 30px rgba(21, 101, 192, 0.3);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --gradient-bg: linear-gradient(135deg, #1a237e 0%, #303f9f 50%, #3949ab 100%);
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Estilos generales */
+body {
+  background: var(--gradient-bg);
+  min-height: 100vh;
   display: flex;
-  height: 100vh;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  padding: 20px;
+  color: var(--text-light);
+  line-height: 1.6;
 }
 
-/* Contenedor centrado */
+/* Contenedor principal */
 .container {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  background: var(--bg-dark);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 500px;
   text-align: center;
-  max-width: 400px;
-  width: 100%;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Título */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-color), var(--primary-light));
+}
+
+/* Encabezado */
 h1 {
-  margin-bottom: 20px;
-  font-size: 26px;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Campos de entrada */
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
 input[type="text"],
-textarea,
-input[type="file"] {
+textarea {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 0.9rem 1.2rem;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(68, 138, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent-color);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Estilo mejorado para el input de archivo */
+.file-input-container {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.file-input-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: rgba(68, 138, 255, 0.1);
+  border: 2px dashed var(--accent-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.file-input-label:hover {
+  background-color: rgba(68, 138, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.file-input-label i {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent-color);
+}
+
+.file-input-label span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.file-input-label .file-hint {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.file-input-container input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-name {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  font-weight: 500;
+  text-align: center;
 }
 
 /* Botón */
 button {
-  background-color: #00c853;
+  width: 100%;
+  padding: 1rem;
+  background: var(--accent-color);
   color: white;
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-  background-color: #00b248;
+  background: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.8rem;
+  }
+  
+  h1 {
+    font-size: 1.7rem;
+  }
+  
+  input[type="text"],
+  textarea,
+  .file-input-label {
+    padding: 0.9rem;
+  }
+  
+  .file-input-label i {
+    font-size: 1.5rem;
+  }
 }

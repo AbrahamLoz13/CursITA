@@ -15,6 +15,9 @@
       <a href="#cursos" class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill">Cursos</a>
       <a href="nosotros.html" class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill">Nosotros</a>
       <a href="#carrito" class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill">Carrito</a>
+       <a href="login.html" id="logout-btn" class="btn btn-danger fw-bold px-4 py-2 rounded-pill">
+      <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+    </a>
     </nav>
   </header>
 
@@ -188,6 +191,9 @@
   </div>
 
 <!-- Modal de Pago -->
+
+
+<!-- Modal de Pago Mejorado -->
 <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -202,29 +208,56 @@
             <select class="form-select" id="metodo-pago" name="metodo_pago" required>
               <option value="" selected disabled>Selecciona un método</option>
               <option value="tarjeta">Tarjeta de Crédito/Débito</option>
-              <option value="paypal">PayPal</option>
-              <option value="transferencia">Transferencia Bancaria</option>
             </select>
           </div>
-          <div id="tarjeta-info" style="display: none;">
+          
+          <!-- Sección Tarjeta (inicialmente oculta) -->
+          <div id="tarjeta-info" class="payment-section" style="display: none;">
             <div class="mb-3">
               <label for="numero-tarjeta" class="form-label">Número de Tarjeta</label>
-              <input type="text" class="form-control" id="numero-tarjeta" name="numero_tarjeta" placeholder="1234 5678 9012 3456">
+              <div class="input-group">
+                <input type="text" class="form-control" id="numero-tarjeta" name="numero_tarjeta" 
+                       placeholder="1234 5678 9012 3456" maxlength="19" data-payment="card">
+                <span class="input-group-text" id="card-type-icon">
+                  <i class="far fa-credit-card"></i>
+                </span>
+              </div>
+              <small class="text-muted form-text">Ej: 4111 1111 1111 1111 (Visa)</small>
+              <div class="invalid-feedback">Por favor ingresa un número de tarjeta válido</div>
             </div>
+            
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="fecha-expiracion" class="form-label">Fecha de Expiración</label>
-                <input type="text" class="form-control" id="fecha-expiracion" name="fecha_expiracion" placeholder="MM/AA">
+                <input type="text" class="form-control" id="fecha-expiracion" name="fecha_expiracion" 
+                       placeholder="MM/AA" maxlength="5" data-payment="card">
+                <div class="invalid-feedback">Fecha inválida (MM/AA)</div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cvv" class="form-label">CVV</label>
-                <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123">
+                <input type="password" class="form-control" id="cvv" name="cvv" 
+                       placeholder="123" maxlength="4" data-payment="card">
+                <div class="invalid-feedback">CVV inválido (3-4 dígitos)</div>
               </div>
             </div>
+            
+            <div class="mb-3">
+              <label for="nombre-tarjeta" class="form-label">Nombre en la Tarjeta</label>
+              <input type="text" class="form-control" id="nombre-tarjeta" name="nombre_tarjeta" data-payment="card">
+              <div class="invalid-feedback">Por favor ingresa el nombre como aparece en la tarjeta</div>
+            </div>
           </div>
-          <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary" id="btn-confirmar-pago">Confirmar Pago</button>
+        
+          <div class="d-grid gap-2 mt-4">
+            <button type="submit" class="btn btn-primary" id="btn-confirmar-pago">
+              <i class="fas fa-lock me-2"></i> Confirmar Pago
+            </button>
           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
         </form>
       </div>
     </div>
@@ -288,9 +321,6 @@
     const cursosComprados = carrito.map(c => c.nombre).join(", ");
     const total = totalSpan.textContent;
 
-    // Simular confirmación
-    alert(`¡Gracias por tu compra!\n\nCursos: ${cursosComprados}\nTotal pagado: $${total}`);
-
     // Aquí podrías hacer un fetch/POST a PHP o guardar en localStorage si deseas
 
     // Vaciar carrito
@@ -303,3 +333,6 @@
   <script src="../js/carrito.js"></script>
 </body>
 </html>
+
+
+

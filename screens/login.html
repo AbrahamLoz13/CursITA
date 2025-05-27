@@ -5,9 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Cursita</title>
   <link rel="stylesheet" href="../css/login.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      overflow-y: auto; /* Habilita el scroll vertical */
+    }
+    
+    .login-logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .login-container {
+      margin: 40px auto; /* Espacio arriba y abajo para el scroll */
+    }
+    
+    /* Estilo para el scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #3498db;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2980b9;
+    }
+  </style>
 </head>
 <body>
   <div class="login-container">
+    <!-- Logo de Cursita -->
+    <img src="../img/cursita.jpg" alt="Logo de Cursita" class="login-logo">
+    
     <h1>Iniciar Sesión</h1>
     <form action="../php/login.php" method="POST">
       <input type="email" name="correo" placeholder="Correo" required />
@@ -17,6 +57,7 @@
 
     <!-- Enlace para nuevos usuarios -->
     <p>¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a></p>
+ 
   </div>
 </body>
 </html>

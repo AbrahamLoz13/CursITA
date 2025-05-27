@@ -12,8 +12,25 @@ header {
     background-color: #0044cc;
     color: white;
     padding: 20px;
+    position: relative;
 }
 
+/* Nuevos estilos para el botón de cerrar sesión */
+#logout-btn {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+#logout-btn i {
+    margin-right: 5px;
+}
+
+/* Resto del CSS permanece igual */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -175,4 +192,3 @@ footer {
     font-size: 18px;
     margin: 5px 0;
 }
-

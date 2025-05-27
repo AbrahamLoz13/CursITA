@@ -45,6 +45,7 @@ function registrarCompra($usuario_id, $cursos, $metodo_pago, $total) {
         return true;
     } catch(PDOException $e) {
         $conn->rollBack();
+        error_log("Error al registrar compra: " . $e->getMessage());
         return false;
     }
 }

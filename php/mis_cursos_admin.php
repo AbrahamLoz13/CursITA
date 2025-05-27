@@ -104,6 +104,6 @@ if (!$result) {
   <?php endif; ?>
 
   <p><a href="../screens/subircursos.html">← Subir otro curso</a></p>
-  <p><a href="../screens/index.html">Volver al inicio</a></p>
+  <p><a href="../screens/subircursos.html">Volver al inicio</a></p>
 </body>
 </html>

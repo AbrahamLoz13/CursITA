@@ -1,0 +1,431 @@
+/* Variables de color actualizadas */
+:root {
+  --primary-color: #4361ee; /* Azul más vibrante */
+  --secondary-color: #2ec4b6; /* Verde azulado más suave */
+  --dark-color: #2b2d42; /* Gris oscuro más profesional */
+  --light-color: #f8f9fa; /* Gris claro más neutro */
+  --accent-color: #ff9e00; /* Naranja para acentos */
+  --danger-color: #ef233c; /* Rojo más moderno */
+  --footer-bg: #1a1a2e; /* Fondo oscuro para footer */
+}
+
+/* Estilos generales optimizados */
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: var(--dark-color);
+  line-height: 1.5;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Encabezado compacto */
+.hero-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #3a0ca3 100%);
+  color: white;
+  padding: 2rem 0 4rem;
+  position: relative;
+}
+
+.hero-header::before {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  background-color: white;
+  transform: skewY(-2deg);
+  z-index: 1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.logo-text {
+  background: white;
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+.header-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+/* Secciones comunes optimizadas */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.divider {
+  width: 4rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  margin: 0 auto;
+  border-radius: 0.125rem;
+}
+
+/* Sección Quiénes Somos mejorada */
+.about-section {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--dark-color);
+  line-height: 1.7;
+}
+
+.mission-vision {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-top: 0.25rem solid var(--primary-color);
+}
+
+.card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.vision-card {
+  border-top-color: var(--secondary-color);
+}
+
+.card-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #3a0ca3 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.vision-card .card-icon {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #1b9aaa 100%);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--dark-color);
+}
+
+.card p {
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+/* Sección Valores optimizada */
+.values-section {
+  padding: 3rem 0;
+  background-color: var(--light-color);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.value-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.value-item i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.value-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--dark-color);
+}
+
+.value-item p {
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+/* Sección Features mejorada */
+.features-section {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+.features-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.feature-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.feature-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  background: var(--primary-color);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.feature-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+.feature-content p {
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+/* Footer compacto y elegante */
+.main-footer {
+  background-color: var(--footer-bg);
+  color: white;
+  padding: 3rem 0 0;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand .logo-text {
+  background: white;
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+
+.footer-brand p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: white;
+  font-size: 1.25rem;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.footer-social a:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+  .hero-header {
+    padding: 1.5rem 0 3rem;
+  }
+  
+  .header-title {
+    font-size: 1.75rem;
+  }
+  
+  .header-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-links {
+    gap: 1rem;
+  }
+  
+  .feature-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .feature-number {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-brand {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-brand .logo-text {
+    align-self: center;
+  }
+}
