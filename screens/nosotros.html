@@ -4,38 +4,147 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nosotros - Cursita</title>
-  <link rel="stylesheet" href="../css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nosotros.css" />
 </head>
 <body>
-  <header>
-    <h1>Sobre Cursita</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="#cursos">Cursos</a></li>
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#carrito">Carrito</a></li>
-      </ul>
-    </nav>
+  <!-- Header con gradiente -->
+  <header class="hero-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+          <span class="logo-text">Cursita</span>
+        </a>
+        <div class="navbar-links">
+          <a href="index.html" class="nav-link">Inicio</a>
+          <a href="nosotros.html" class="nav-link active">Nosotros</a>
+        </div>
+      </nav>
+      <div class="header-content">
+        <h1 class="header-title">Nuestra Historia</h1>
+        <p class="header-subtitle">Conoce más sobre nuestra pasión por la educación</p>
+      </div>
+    </div>
   </header>
 
-  <section class="nosotros">
-    <h2>Quiénes Somos</h2>
-    <p>Cursita es una plataforma educativa en línea que ofrece cursos de alta calidad en programación, diseño y tecnología.</p>
-
-    <h3>Nuestra Misión</h3>
-    <p>Brindar educación accesible para gente del Instituto Tecnológico de Aguascalientes</p>
-
-    <h3>¿Por qué elegirnos?</h3>
-    <ul>
-      <li>✔ Cursos actualizados con contenido relevante.</li>
-      <li>✔ Profesores expertos en cada materia.</li>
-      <li>✔ Certificaciones al finalizar cada curso.</li>
-    </ul>
+  <!-- Sección Quiénes Somos -->
+  <section class="about-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-content">
+        <p class="about-text">Cursita es una plataforma educativa en línea que ofrece cursos de alta calidad en programación, diseño y tecnología, creada especialmente para la comunidad del Instituto Tecnológico de Aguascalientes.</p>
+        
+        <div class="mission-vision">
+          <div class="card mission-card">
+            <div class="card-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3>Nuestra Misión</h3>
+            <p>Brindar educación accesible y de calidad para formar a los profesionales tecnológicos del mañana.</p>
+          </div>
+          
+          <div class="card vision-card">
+            <div class="card-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>Nuestra Visión</h3>
+            <p>Ser la plataforma educativa preferida por los estudiantes del TecNM, reconocida por su excelencia académica.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Cursita - Aprende a tu ritmo</p>
+  <!-- Sección Valores -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Nuestros Valores</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="values-grid">
+        <div class="value-item">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Excelencia Académica</h3>
+          <p>Contenidos rigurosos y actualizados constantemente</p>
+        </div>
+        <div class="value-item">
+          <i class="fas fa-users"></i>
+          <h3>Enfoque Estudiantil</h3>
+          <p>Centrados en las necesidades reales de los alumnos</p>
+        </div>
+        <div class="value-item">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Innovación</h3>
+          <p>Métodos de enseñanza vanguardistas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Por qué elegirnos -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Por qué elegir Cursita?</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-number">01</div>
+          <div class="feature-content">
+            <h3>Cursos Actualizados</h3>
+            <p>Contenido relevante y alineado con las últimas tendencias tecnológicas</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-number">02</div>
+          <div class="feature-content">
+            <h3>Profesores Expertos</h3>
+            <p>Instructores con amplia experiencia profesional y docente</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-number">03</div>
+          <div class="feature-content">
+            <h3>Certificaciones</h3>
+            <p>Diplomas reconocidos al finalizar cada curso</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-number">04</div>
+          <div class="feature-content">
+            <h3>Comunidad</h3>
+            <p>Acceso a una red de estudiantes y egresados del TecNM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-text">Cursita</span>
+          <p>Aprende a tu ritmo</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="nosotros.html">Nosotros</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cursita. Todos los derechos reservados.</p>
+      </div>
+    </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

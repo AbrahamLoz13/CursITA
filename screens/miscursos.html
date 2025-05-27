@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Cursos</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Asegúrate de tener este archivo o cámbialo según tu diseño -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .curso {
+            border-bottom: 1px solid #ccc;
+            padding: 15px 0;
+        }
+
+        .curso:last-child {
+            border-bottom: none;
+        }
+
+        .nombre {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .precio {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .fecha {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .no-cursos {
+            text-align: center;
+            color: #888;
+            margin-top: 40px;
+        }
+
+        .volver {
+            display: block;
+            margin: 30px auto 0;
+            width: 200px;
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .volver:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mis Cursos Comprados</h1>
+
+        <?php if (!empty($cursos)) : ?>
+            <?php foreach ($cursos as $curso) : ?>
+                <div class="curso">
+                    <div class="nombre"><?= htmlspecialchars($curso['nombre_curso']) ?></div>
+                    <div class="precio">$<?= number_format($curso['precio'], 2) ?></div>
+                    <div class="fecha">Fecha de compra: <?= htmlspecialchars($curso['fecha']) ?></div>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p class="no-cursos">Aún no has comprado ningún curso.</p>
+        <?php endif; ?>
+<a href="index.html" class="volver">Volver a Inicio</a>
+    </div>
+</body>
+</html>
