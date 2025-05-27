@@ -3,7 +3,7 @@ session_start();
 include("conexion.php");
 
 if (!isset($_POST['correo'], $_POST['contrasena'])) {
-    echo "<script>alert('Faltan datos.'); window.location.href = '../screens/login.html';</script>";
+    echo "<script>alert('Faltan datos.'); window.location.href = '../screens/index.html';</script>";
     exit();
 }
 
@@ -15,7 +15,7 @@ $query = "SELECT * FROM usuarios WHERE correo = '$correo'";
 $resultado = mysqli_query($conexion, $query);
 
 if (!$resultado || mysqli_num_rows($resultado) === 0) {
-    echo "<script>alert('Usuario no encontrado.'); window.location.href = '../screens/login.html';</script>";
+    echo "<script>alert('Usuario no encontrado.'); window.location.href = '../screens/index.html';</script>";
     exit();
 }
 
@@ -30,11 +30,11 @@ if (password_verify($contrasena, $usuario['contrasena'])) {
     if ($usuario['rol'] === 'admin') {
         header("Location: ../screens/subircursos.html");
     } else {
-        header("Location: ../screens/index.html");
+        header("Location: ../screens/principal.html");
     }
     exit();
 } else {
-    echo "<script>alert('Contraseña incorrecta.'); window.location.href = '../screens/login.html';</script>";
+    echo "<script>alert('Contraseña incorrecta.'); window.location.href = '../screens/index.html';</script>";
     exit();
 }
 ?>
